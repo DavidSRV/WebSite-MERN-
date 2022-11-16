@@ -47,7 +47,7 @@ function Contact() {
                 <label htmlFor="massage" className="form-label">Your Massage Here!</label>
                 <textarea className="form-control" id="text-area" rows="5"></textarea>
               </div>
-              <button type="submit" className="btn btn-outline-primary">
+              <button type="submit" className="btn btn-outline-primary px-4">
                 Send Massage <i className="fa fa-paper-plane ms-2"></i>
               </button>
             </form>
