@@ -24,10 +24,10 @@ export default function NavBar() {
         </li>
         
       </ul>
-      <Link class="navbar-brand fw-bolder fs-4 mx-auto" to="/">Navbar</Link>
-      <button className="btn btn-outline-primary ms-4 px-4 rounded-pill">
-        <i className="fa fa-sign-in me-2"></i> login</button>
-      <button className="btn btn-outline-primary ms-2 px-4 rounded-pill"> <i className="fa fa-user-plus me-2"></i>Register</button>
+      <Link class="navbar-brand fw-bolder fs-4 mx-auto" to="/">Fine Art</Link>
+      <Link to='/Login' className="btn btn-outline-primary ms-4 px-4 rounded-pill">
+        <i className="fa fa-sign-in me-2"></i> login</Link>
+      <Link to='/Register' className="btn btn-outline-primary ms-2 px-4 rounded-pill"> <i className="fa fa-user-plus me-2"></i>Register</Link>
     </div>
   </div>
 </nav>
