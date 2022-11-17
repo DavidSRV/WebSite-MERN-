@@ -8,6 +8,7 @@ import Footer from "./page/Footer";
 import { Route, Routes } from "react-router-dom";
 import Login from "./page/Login";
 import Register from "./page/Register";
+import DashBoard from "./page/DashBoard";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Dashboard" element={<DashBoard />} />
       </Routes>
       <Footer />
     </>
