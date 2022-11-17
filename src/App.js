@@ -10,6 +10,7 @@ import Login from "./page/Login";
 import Register from "./page/Register";
 import DashBoard from "./page/DashBoard";
 
+
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Dashboard" element={<DashBoard />} />
       </Routes>
+      <h1>prueba</h1>
       <Footer />
     </>
   );
