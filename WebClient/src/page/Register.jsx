@@ -1,7 +1,59 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function Register() {
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setUser({...user, [name]:value})
+
+  }
+
+  const history = useNavigate();
+
+  const handleSubmit =  async (e) =>{
+    e.preventDefault();
+
+    const {username, email, password} = user;
+
+    try {
+
+      const res = await fetch('/register', {
+        method: "POST",
+        headers: {
+          "Content-Type" : "application/json"
+        },
+
+        body: JSON.stringify({
+          username, email, password 
+        })
+      })
+
+      if(res.status === 400 || !res){
+        window.alert("Already Used Details")
+      }else{
+        window.alert("Registered Successfully");
+        history('/login');
+
+        //history.pushState('/login ')
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
   return (
     <section>
       <div className="container shadow my-5">
@@ -19,8 +71,7 @@ function Register() {
           </div>
           <div className="col-md-6 p-5">
             <div className="display-6 fw-bolder mb-5">REGISTER</div>
-            <form>
-
+            <form onSubmit={handleSubmit} method="POST">
               <div class="mb-3">
                 <label for="name" class="form-label">
                   Username
@@ -29,8 +80,26 @@ function Register() {
                   type="text"
                   class="form-control"
                   id="name"
+                  name="username"
+                  value={user.username}
+                  onChange={handleInput}
                 />
               </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  value={user.email}
+                  onChange={handleInput}
+                />
+              </div>
+
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">
                   Password
@@ -38,9 +107,11 @@ function Register() {
                 <input
                   type="password"
                   class="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
+                  name="password"
+                  value={user.password}
+                  onChange={handleInput}
                 />
-
               </div>
               <div class="mb-3 form-check">
                 <input
@@ -49,18 +120,18 @@ function Register() {
                   id="exampleCheck1"
                 />
                 <label class="form-check-label" for="exampleCheck1">
-                 I Agree Terms and Conditions
+                  I Agree Terms and Conditions
                 </label>
               </div>
               <button type="submit" class="btn btn-outline-primary w-100 mt-3">
-                Register    
+                Register
               </button>
             </form>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Register
+export default Register;

@@ -24,7 +24,6 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Dashboard" element={<DashBoard />} />
       </Routes>
-      <h1>prueba</h1>
       <Footer />
     </>
   );
