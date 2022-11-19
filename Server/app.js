@@ -18,6 +18,7 @@ const port =  process.env.PORT;
 // Require Model 
 
 const Users = require('./models/userSchema');
+const Message = require('./models/msgSchema');
 
 //Method for get data and cookies from fronted
 app.use(express.json());
@@ -95,6 +96,32 @@ app.post('/login', async (req, res)=>{
 })
 
 
+// MESSAGE
+
+app.post('/message', async (req, res)=>{
+    try {
+        //get body or Data
+        const name = req.body.name;
+        const email = req.body.email;
+        const message = req.body.message;
+
+        const sendMessage = new Message({
+            name,
+            email,
+            message
+        });
+
+        //Save Method is Used to Create User Or insert user
+        //First hashing before insert user
+        const created = await sendMessage.save();
+        console.log(created);
+        res.status(200).send("Sent")
+        
+    } catch (error) {
+        res.status(400).send(error)
+
+    }
+})
 
 //Run Server
 

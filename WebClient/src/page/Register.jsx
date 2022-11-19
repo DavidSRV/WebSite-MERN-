@@ -3,12 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 function Register() {
+
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
   });
-
 
   const handleInput = (e) => {
     let name = e.target.name;
