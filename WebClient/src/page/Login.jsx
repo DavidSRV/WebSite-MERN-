@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/_Login.scss";
 
 function Login() {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLogin = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setLogin({ ...login, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = login;
+
+    try {
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      if (res.status === 400 || !res) {
+        window.alert("Invalid Credentials");
+      } else {
+        window.alert("Login Succesfull");
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <section>
       <div className="container shadow my-5">
@@ -20,7 +59,7 @@ function Login() {
           </div>
           <div className="col-md-6 p-5">
             <div className="display-6 fw-bolder mb-5">LOGIN</div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">
                   Email address
@@ -28,8 +67,10 @@ function Login() {
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                  id="email"
+                  name="email"
+                  value={login.email}
+                  onChange={handleLogin}
                 />
                 <div id="emailHelp" class="form-text">
                   We'll never share your email with anyone else.
@@ -42,7 +83,10 @@ function Login() {
                 <input
                   type="password"
                   class="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
+                  name="password"
+                  value={login.password}
+                  onChange={handleLogin}
                 />
               </div>
               <div class="mb-3 form-check">
@@ -52,7 +96,7 @@ function Login() {
                   id="exampleCheck1"
                 />
                 <label class="form-check-label" for="exampleCheck1">
-                 Remember me
+                  Remember me
                 </label>
               </div>
               <button type="submit" class="btn btn-primary w-100 mt-3">

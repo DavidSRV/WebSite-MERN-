@@ -52,8 +52,6 @@ function Register() {
     }
   }
 
-
-
   return (
     <section>
       <div className="container shadow my-5">
