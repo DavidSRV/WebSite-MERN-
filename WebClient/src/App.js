@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./page/Login";
 import Register from "./page/Register";
 import DashBoard from "./page/DashBoard";
+import Logout from "./page/Logout";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Dashboard" element={<DashBoard />} />
+        <Route path="/Logout" element={<Logout />} />
       </Routes>
       <Footer />
     </>

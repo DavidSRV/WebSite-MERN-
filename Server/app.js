@@ -111,8 +111,7 @@ app.post('/message', async (req, res)=>{
             message
         });
 
-        //Save Method is Used to Create User Or insert user
-        //First hashing before insert user
+        //Save Method is Used to Create a Message
         const created = await sendMessage.save();
         console.log(created);
         res.status(200).send("Sent")
@@ -121,6 +120,13 @@ app.post('/message', async (req, res)=>{
         res.status(400).send(error)
 
     }
+})
+
+// LOGOUT PAGE
+
+app.get('/logout', (req, res) => {
+    res.clearCookie("jwt", {path : '/'})
+    res.status(200).send("User Logged Out")
 })
 
 //Run Server
