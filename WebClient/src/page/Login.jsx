@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../style/_Login.scss";
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
     setLogin({ ...login, [name]: value });
   };
 
-  const history = Navigate()
+  const history = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,8 +37,9 @@ function Login() {
         window.alert("Invalid Credentials");
       } else {
         window.alert("Login Succesfull");
-        window.location.reload();
         history('/')
+        window.location.reload();
+        
       }
     } catch (error) {
       console.log(error)

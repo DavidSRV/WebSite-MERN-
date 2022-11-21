@@ -1,13 +1,14 @@
 const Users = require('../models/userSchema');
+const jwt = require('jsonwebtoken')
 
 const authenticate = async (req, res, next) => {
     try {
         //Get the cookies
         const token = req.cookies.jwt;
         if(!token){
-            res.status(401).sen("No token")
+            res.status(401).send("No token")
         }else{
-            const verifyToken = jwt.verify(token, process.env.SECTRET_KEY);
+            const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
             const rootUser = await Users.findOne({_id : verifyToken._id, "tokens.token" : token});
 
             if(!rootUser){

@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 
 function App() {
 
-  const [isLogged, setIsLogged] = useState(true) 
+  const [isLogged, setIsLogged] = useState(false) 
   const [isLogged1, setIsLogged1] = useState(true) 
 
   const isLoggedIn = async () => {
@@ -30,12 +30,12 @@ function App() {
 
       if(res.status === 200){
         setIsLogged(true)
-        setIsLogged(false)
+        setIsLogged1(false)
 
       }
       if(res.status === 401){
         setIsLogged(false)
-        setIsLogged(true)
+        setIsLogged1(true)
 
       }
     
@@ -59,19 +59,19 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route
           path="/Login"
-          element={!isLogged ? <Navigate to="/" replace /> : <Login />}
+          element={!isLogged1 ? <Navigate to="/" replace /> : <Login />}
         />
         <Route
           path="/Register"
-          element={!isLogged ? <Navigate to="/" replace /> : <Register />}
+          element={!isLogged1 ? <Navigate to="/" replace /> : <Register />}
         />
         <Route
           path="/Dashboard"
-          element={!isLogged1 ? <Navigate to="/" replace /> : <DashBoard />}
+          element={!isLogged ? <Navigate to="/" replace /> : <DashBoard />}
         />
         <Route
           path="/Logout"
-          element={!isLogged1 ? <Navigate to="/" replace /> : <Logout />}
+          element={!isLogged ? <Navigate to="/" replace /> : <Logout />}
         />
       </Routes>
       <Footer />
