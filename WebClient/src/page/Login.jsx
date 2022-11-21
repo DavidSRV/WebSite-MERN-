@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "../style/_Login.scss";
 
 function Login() {
@@ -14,6 +14,8 @@ function Login() {
 
     setLogin({ ...login, [name]: value });
   };
+
+  const history = Navigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ function Login() {
       } else {
         window.alert("Login Succesfull");
         window.location.reload();
+        history('/')
       }
     } catch (error) {
       console.log(error)

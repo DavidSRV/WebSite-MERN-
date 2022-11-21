@@ -19,6 +19,7 @@ const port =  process.env.PORT;
 
 const Users = require('./models/userSchema');
 const Message = require('./models/msgSchema');
+const authenticate = require('./middleware/authenticate')
 
 //Method for get data and cookies from fronted
 app.use(express.json());
@@ -127,6 +128,12 @@ app.post('/message', async (req, res)=>{
 app.get('/logout', (req, res) => {
     res.clearCookie("jwt", {path : '/'})
     res.status(200).send("User Logged Out")
+})
+
+// AUTHENTICATION
+
+app.get('/auth', authenticate, (res, req)=>{
+
 })
 
 //Run Server
