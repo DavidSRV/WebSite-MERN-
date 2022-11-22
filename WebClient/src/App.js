@@ -51,7 +51,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar isLogged={isLogged1}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />

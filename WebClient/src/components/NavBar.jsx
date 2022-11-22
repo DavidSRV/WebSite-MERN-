@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar({ isLogged }) {
   return (
     <nav class="navbar navbar-expand-lg navbar-light shadow ">
       <div class="container">
@@ -42,29 +42,40 @@ export default function NavBar() {
           <Link class="navbar-brand fw-bolder fs-4 mx-auto" to="/">
             Fine Art
           </Link>
-          <Link
-            to="/Login"
-            className="btn btn-outline-primary ms-4 px-4 rounded-pill"
-          >
-            <i className="fa fa-sign-in me-2"></i> login
-          </Link>
-          <Link
-            to="/Register"
-            className="btn btn-outline-primary ms-2 px-4 rounded-pill"
-          ><i className="fa fa-user-plus me-2"></i>Register
-          </Link>
-          <Link
-            to="/Dashboard"
-            className="btn btn-outline-primary ms-2 px-4 rounded-pill"
-          ><i className="fa fa-user-plus me-2"></i>Dashboard
-          </Link>
-          <Link
-            to="/Logout"
-            className="btn btn-outline-primary ms-2 px-4 rounded-pill"
-          ><i className="fa fa-sign-out me-2"></i>Logout
-          </Link>
+          {isLogged ? (
+            <>
+              <Link
+                to="/Login"
+                className="btn btn-outline-primary ms-4 px-4 rounded-pill"
+              >
+                <i className="fa fa-sign-in me-2"></i> login
+              </Link>
+              <Link
+                to="/Register"
+                className="btn btn-outline-primary ms-2 px-4 rounded-pill"
+              >
+                <i className="fa fa-user-plus me-2"></i>Register
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/Dashboard"
+                className="btn btn-outline-primary ms-2 px-4 rounded-pill"
+              >
+                <i className="fa fa-user-plus me-2"></i>Dashboard
+              </Link>
+              <Link
+                to="/Logout"
+                className="btn btn-outline-primary ms-2 px-4 rounded-pill"
+              >
+                <i className="fa fa-sign-out me-2"></i>Logout
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
+
   );
 }

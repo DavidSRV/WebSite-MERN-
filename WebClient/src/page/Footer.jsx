@@ -88,7 +88,7 @@ function Footer() {
                     placeholder="Email address"
                   />
                   <button
-                    className="btn btn-primary rounded-pill px-4"
+                    className="btn btn-primary rounded-pill px-2"
                     type="button"
                   >
                     Subscribe

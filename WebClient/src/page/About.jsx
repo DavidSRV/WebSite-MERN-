@@ -1,13 +1,15 @@
 import React from "react";
 import about from "../assets/img/about1.jpg";
+import '../style/_About.scss'
 
 function About() {
+
   return (
     <section id="about">
       <div className="container my-5 py-5">
         <div className="row">
           <div className="col-md-6">
-            <img src={about} alt="About-img" className="w-75 mt-5" />
+            <img src={about} alt="About-img" id="img" className="w-75 mt-5" />
           </div>
           <div className="col-md-6">
             <h3 className="fs-5 mb-0">About Us</h3>
