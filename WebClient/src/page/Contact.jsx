@@ -66,7 +66,7 @@ function Contact() {
         </div>
         <div className="row">
           <div className="col-md-6">
-            <img className="w-75" src={contact} alt="Contact" />
+            <img id="img" className="w-75" src={contact} alt="Contact" />
           </div>
           <div className="col-md-6">
             <form onSubmit={handleSubmit} method="POST">
