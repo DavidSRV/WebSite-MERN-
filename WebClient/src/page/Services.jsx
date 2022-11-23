@@ -30,7 +30,7 @@ function Services() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 mt-4">
             <div class="card p-3">
               <div class="card-body text-center">
                 <i className="fa fa-mobile fa-4x mb-4 text-primary"></i>
@@ -42,7 +42,7 @@ function Services() {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 mt-4">
             <div class="card p-3">
               <div class="card-body text-center">
                 <i className="fa fa-users fa-4x mb-4 text-primary"></i>

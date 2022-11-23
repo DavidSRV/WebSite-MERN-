@@ -6,7 +6,7 @@ function About() {
 
   return (
     <section id="about">
-      <div className="container my-5 py-5">
+      <div className="container my-3 py-3">
         <div className="row">
           <div className="col-md-6">
             <img src={about} alt="About-img" id="img" className="w-75 mt-5" />
